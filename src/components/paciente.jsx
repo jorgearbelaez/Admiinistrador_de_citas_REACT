@@ -1,40 +1,66 @@
 
 
-const Paciente = () => {
+const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
+
+    const {nombre, propietario, email, fecha, sintomas, id}= paciente
+
+    const handelEliminar=()=>{
+        const respuesta = confirm('Deseas eliminar este paciente?')
+
+        if(respuesta){
+            eliminarPaciente(id)
+        }
+    }
   return (
-    <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl
+    <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl 
         ">
             <p className="font-bold mb-3 text-gray-700 uppercase
             ">Nombre: {''}
 
                 <span className="font-normal normal-case
-                ">Hook</span>
+                ">{nombre}</span>
             </p>
             <p className="font-bold mb-3 text-gray-700 uppercase
             ">Propietario: {''}
 
                 <span className="font-normal normal-case
-                ">Jorge</span>
+                ">{propietario}</span>
             </p>
             <p className="font-bold mb-3 text-gray-700 uppercase
             ">Email: {''}
 
                 <span className="font-normal normal-case
-                ">jarbelaezc10@hotmail.com</span>
+                ">{email}</span>
             </p>
             <p className="font-bold mb-3 text-gray-700 uppercase
             ">Fecha de Alta: {''}
 
                 <span className="font-normal normal-case
-                ">26 de octubre 2022</span>
+                ">{fecha}</span>
             </p>
             <p className="font-bold mb-3 text-gray-700 uppercase
             ">sintomas: {''}
 
                 <span className="font-normal normal-case
-                ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, dignissimos eum mollitia soluta aliquam asperiores amet explicabo eos blanditiis accusantium excepturi dolorem, quaerat rerum in, at possimus sunt quae doloribus?</span>
+                ">{sintomas}</span>
             </p>
+
+            <div className="flex justify-around mt-10">
+                <button 
+                    type='button'
+                    className="py-2 px-10 bg-indigo-600 hover:bg-indigo-800 text-white rounded-lg  font-bold uppercase transition-all"
+                    onClick={()=>setPaciente(paciente)}
+                >Editar</button>
+            
+                <button 
+                    type='button'
+                    className="py-2 px-10 bg-red-600 hover:bg-red-800 text-white rounded-lg  font-bold uppercase transition-all"
+                    onClick={handelEliminar}
+                >Eliminar</button>
+            </div>
         </div>
+
+        
   )
 }
 
